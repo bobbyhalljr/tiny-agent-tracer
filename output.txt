@@ -1,0 +1,29 @@
+Trace (MOCK model, virtual clock)
+
+invoke_agent release-notes               ok     7450ms
+├─ plan release-notes                    ok      820ms
+│  └─ chat mock-large                    ok      820ms  in=900 out=120
+├─ execute_tool read_file                ok       30ms
+├─ chat mock-large                       ok      640ms  in=1400 out=210
+├─ invoke_agent changelog-checker        ok      510ms
+│  ├─ chat mock-small                    ok      210ms  in=600 out=40
+│  ├─ execute_tool git_log               ok      120ms
+│  └─ chat mock-small                    ok      180ms  tokens=unknown
+├─ execute_tool send_email               error  5000ms  error.type=timeout
+└─ chat mock-large                       ok      450ms  in=1800 out=90
+
+Final answer: "Release notes drafted and sent to the team."
+
+What failed, and under what?
+  execute_tool send_email (timeout) <- invoke_agent release-notes
+
+Does the answer match the trace?
+  answer says "sent", but execute_tool send_email failed
+
+Where did the time go?
+  chat          2300ms
+  execute_tool  5150ms
+
+Tokens per agent (subagents counted separately):
+  release-notes      4520 tokens
+  changelog-checker  640 tokens, 1 chat span unknown

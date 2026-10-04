@@ -1,0 +1,25 @@
+{
+  "name": "tiny-agent-tracer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Trace one agent run with OpenTelemetry GenAI span names in TypeScript. Mocked model, virtual clock, no API key.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Bobby Hall Jr (https://bhjr.dev)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbyhalljr/tiny-agent-tracer.git"
+  },
+  "scripts": {
+    "start": "tsx tracer.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
