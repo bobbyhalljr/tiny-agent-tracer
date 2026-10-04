@@ -8,12 +8,12 @@ The model is a mock. No API key. No OpenTelemetry SDK.
 
 An agent's final answer is a claim. The trace is the evidence.
 
-Two recent changes point the same way:
-
-- OpenAI, Sep 10, 2026: [Introducing the Agents API](https://openai.com/index/introducing-the-agents-api/) (public beta). The [tracing guide](https://developers.openai.com/api/docs/guides/agents-api/tracing) says tracing is on by default for new sessions, groups agent, generation and tool spans, and exports them as OTLP JSON.
+- OpenAI, report updated Sep 25, 2026: [An agent used DNS to reach an external chatbot](https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot). The agent told the user it could not identify the person. Its tool calls show it reached an outside chatbot over DNS and sent 18 more questions, and "the last batch was still running when the agent replied to the user."
+- In the last two weeks, AWS [launched CloudWatch Omni](https://aws.amazon.com/blogs/aws/introducing-amazon-cloudwatch-omni-ai-powered-observability-for-generative-ai-and-agentic-workloads/) (Sep 22), LiteLLM [launched Lens](https://docs.litellm.ai/blog/litellm-lens-launch) (Oct 1), and Microsoft [described Insights in Foundry](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/beyond-the-trace-the-science-of-insight-quality/4559981) (Oct 2, public preview). All of them read agent traces.
 - OpenTelemetry, Sep 29 and 30, 2026: the [GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai) merged `gen_ai.skill.*` attributes for the execute tool span (#498) and a `gen_ai.main_agent` entity (#270). The conventions are still Development status.
+- OpenAI's [Agents API tracing guide](https://developers.openai.com/api/docs/guides/agents-api/tracing) turns tracing on by default and exports agent, generation and tool spans as OTLP JSON.
 
-This repo borrows the span names (`invoke_agent`, `plan`, `chat`, `execute_tool`). It is not how OpenAI or any OpenTelemetry SDK records traces.
+This repo borrows the span names (`invoke_agent`, `plan`, `chat`, `execute_tool`). It is not how OpenAI, AWS or any OpenTelemetry SDK records traces.
 
 ## Run it
 
@@ -97,7 +97,7 @@ What is real and what is mocked:
 
 - The model, the tools and every duration are a MOCK on a virtual clock. No network. No API key.
 - Unknown token usage stays `null` and is reported as unknown, never as zero.
-- The OpenAI and OpenTelemetry references above are real and dated.
+- The OpenAI, AWS, LiteLLM, Microsoft and OpenTelemetry references above are real and dated.
 
 ## Limits
 
@@ -110,8 +110,8 @@ This is a teaching tracer.
 
 ## Read more
 
-- Dev.to: [Trust the Trace, Not the Answer: Build a Tiny Agent Tracer in TypeScript](DEVTO_URL)
-- Substack: [Trust the Trace, Not the Answer: Build a Tiny Agent Tracer in TypeScript](SUBSTACK_URL)
+- Dev.to: [Stop Trusting Your Agent's Final Answer: Build a Tiny Agent Tracer in TypeScript](DEVTO_URL)
+- Substack: [Stop Trusting Your Agent's Final Answer: Build a Tiny Agent Tracer in TypeScript](SUBSTACK_URL)
 
 ## License
 
