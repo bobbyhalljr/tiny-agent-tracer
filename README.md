@@ -111,7 +111,7 @@ This is a teaching tracer.
 ## Read more
 
 - Dev.to: [Stop Trusting Your Agent's Final Answer: Build a Tiny Agent Tracer in TypeScript](https://dev.to/bobbyhalljr/stop-trusting-your-agents-final-answer-build-a-tiny-agent-tracer-in-typescript-24dl)
-- Substack: [Stop Trusting Your Agent's Final Answer: Build a Tiny Agent Tracer in TypeScript](SUBSTACK_URL_PENDING)
+- Substack: [Stop Trusting Your Agent's Final Answer: Build a Tiny Agent Tracer in TypeScript](https://bobbyhalljr.substack.com/p/stop-trusting-your-agents-final-answer)
 
 ## License
 
